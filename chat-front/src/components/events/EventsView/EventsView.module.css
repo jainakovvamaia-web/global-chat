@@ -1,0 +1,110 @@
+.page {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-2xl);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: var(--indigo-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--indigo-50);
+}
+
+.emoji {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.date {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--indigo-700);
+}
+
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--indigo-500);
+}
+
+.joinedBadge {
+  margin-left: auto;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--green-700);
+  background: var(--green-100);
+  border-radius: 9999px;
+}
+
+.cardBody {
+  padding: 16px;
+}
+
+.title {
+  margin-bottom: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.description {
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.625;
+  color: var(--slate-500);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-500);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

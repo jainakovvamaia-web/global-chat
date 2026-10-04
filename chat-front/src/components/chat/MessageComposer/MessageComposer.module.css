@@ -1,0 +1,127 @@
+.composer {
+  flex-shrink: 0;
+  padding: 8px 16px 16px;
+}
+
+.replyBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-500);
+  background: var(--indigo-50);
+  border-left: 2px solid var(--indigo-400);
+  border-radius: var(--radius-lg);
+}
+
+.replyText {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.replyText strong {
+  color: var(--indigo-700);
+}
+
+.field {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-2xl);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field:focus-within {
+  border-color: var(--indigo-300);
+  box-shadow: var(--ring-indigo);
+}
+
+.iconButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  color: var(--slate-400);
+  transition: color 0.15s;
+}
+
+.iconButton:not(:disabled):hover {
+  color: var(--indigo-500);
+}
+
+.iconButton:disabled {
+  opacity: 0.5;
+}
+
+.textarea {
+  flex: 1;
+  min-width: 0;
+  max-height: 128px;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--slate-900);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: var(--slate-400);
+}
+
+.pickerWrapper {
+  position: relative;
+  display: flex;
+}
+
+.picker {
+  right: 0;
+  bottom: calc(100% + 12px);
+}
+
+.sendButton {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate-400);
+  background: var(--slate-200);
+  border-radius: var(--radius-xl);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sendButtonActive {
+  color: #fff;
+  background: var(--indigo-600);
+}
+
+.sendButtonActive:hover {
+  background: var(--indigo-700);
+}
+
+.hint {
+  margin-top: 6px;
+  padding: 0 4px;
+  font-size: 10px;
+  color: var(--slate-400);
+}
+
+/* На телефоне подсказка про клавиши не нужна */
+@media (hover: none) {
+  .hint {
+    display: none;
+  }
+}

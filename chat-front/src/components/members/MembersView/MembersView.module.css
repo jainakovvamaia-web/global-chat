@@ -1,0 +1,96 @@
+.page {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.list ul {
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  transition: background-color 0.15s;
+}
+
+.row:hover {
+  background: var(--slate-50);
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--slate-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.you {
+  font-weight: 400;
+  color: var(--slate-400);
+}
+
+.meta {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+.online {
+  color: var(--green-600);
+}
+
+.writeButton {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--indigo-600);
+  background: var(--indigo-50);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.row:hover .writeButton,
+.writeButton:focus-visible {
+  opacity: 0.6;
+}
+
+/* На сенсорных экранах наведения нет — показываем кнопку сразу */
+@media (hover: none) {
+  .writeButton {
+    opacity: 0.6;
+  }
+}

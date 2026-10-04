@@ -1,0 +1,29 @@
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 24px;
+  background: var(--slate-200);
+  border-radius: 9999px;
+  transition: background-color 0.15s;
+}
+
+.on {
+  background: var(--indigo-600);
+}
+
+.knob {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  transition: left 0.15s;
+}
+
+.on .knob {
+  left: 20px;
+}

@@ -1,0 +1,35 @@
+.fieldset {
+  border: none;
+}
+
+.legend {
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 6px;
+}
+
+.option {
+  height: 40px;
+  font-size: 20px;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.option:hover {
+  border-color: var(--indigo-200);
+}
+
+.active,
+.active:hover {
+  background: var(--indigo-50);
+  border-color: var(--indigo-400);
+}

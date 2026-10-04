@@ -1,0 +1,132 @@
+.page {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.counter {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--red-500);
+  border-radius: 50%;
+}
+
+.markAll {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--indigo-600);
+}
+
+.markAll:hover {
+  color: var(--indigo-700);
+}
+
+.filters {
+  padding: 8px 16px;
+  border-bottom: 1px solid var(--slate-100);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.list ul {
+  list-style: none;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--slate-50);
+  transition: background-color 0.15s;
+}
+
+.item:hover {
+  background: var(--slate-50);
+}
+
+.unread {
+  background: rgb(238 242 255 / 0.4);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  background: var(--slate-100);
+  border-radius: var(--radius-xl);
+}
+
+.unread .icon {
+  background: var(--indigo-100);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--slate-700);
+}
+
+.unread .title {
+  color: var(--indigo-700);
+}
+
+.time {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+.text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.625;
+  color: var(--slate-500);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  margin-top: 6px;
+  background: var(--indigo-500);
+  border-radius: 50%;
+}

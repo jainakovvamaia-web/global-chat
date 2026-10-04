@@ -1,0 +1,196 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.logoMark {
+  display: flex;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 6px -1px var(--indigo-200), 0 2px 4px -2px var(--indigo-200);
+}
+
+.logoText {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.title {
+  margin-bottom: 4px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--slate-900);
+}
+
+.titleAlone {
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  margin-bottom: 32px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--slate-500);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: var(--slate-200);
+}
+
+.google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 9px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--slate-700);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  transition: background-color 0.15s;
+}
+
+.google:not(:disabled):hover {
+  background: var(--slate-50);
+}
+
+.google:disabled {
+  opacity: 0.6;
+}
+
+.demo {
+  margin-top: 16px;
+  padding: 8px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  color: var(--amber-700);
+  background: var(--amber-50);
+  border: 1px solid var(--amber-200);
+  border-radius: var(--radius-xl);
+}
+
+.switch {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--slate-500);
+}
+
+.switchLink {
+  font-weight: 600;
+  color: var(--indigo-600);
+}
+
+.switchLink:hover {
+  color: var(--indigo-700);
+}
+
+/* ── Общие элементы форм ─────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.optionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  line-height: 1.625;
+  color: var(--slate-600);
+  cursor: pointer;
+}
+
+.checkbox input {
+  margin-top: 3px;
+  accent-color: var(--indigo-600);
+}
+
+.checkboxError {
+  color: var(--red-600);
+}
+
+.accentText {
+  color: var(--indigo-600);
+}
+
+.smallLink {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  color: var(--indigo-600);
+}
+
+.smallLink:hover {
+  color: var(--indigo-700);
+}
+
+.error {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--red-500);
+}
+
+.sent {
+  text-align: center;
+}
+
+.sentIcon {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--green-500);
+  background: var(--green-50);
+  border-radius: var(--radius-2xl);
+}
+
+.sentText {
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--slate-500);
+}
+
+.sentText strong {
+  color: var(--slate-700);
+}

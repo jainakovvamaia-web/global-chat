@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    // Файлы
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Окружение: Node.js (CommonJS, как в package.json)
+    "module": "nodenext",
+    "target": "es2022",
+    "types": ["node"],
+
+    "sourceMap": true,
+
+    // Строгие проверки типов
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "verbatimModuleSyntax": false,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  }
+}

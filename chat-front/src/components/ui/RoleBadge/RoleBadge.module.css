@@ -1,0 +1,38 @@
+.badge {
+  flex-shrink: 0;
+  font-weight: 500;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.sm {
+  padding: 2px 6px;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.md {
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.owner {
+  color: var(--amber-700);
+  background: var(--amber-100);
+}
+
+.admin {
+  color: var(--indigo-700);
+  background: var(--indigo-100);
+}
+
+.moderator {
+  color: var(--emerald-700);
+  background: var(--emerald-100);
+}
+
+.member {
+  color: var(--slate-600);
+  background: var(--slate-100);
+}

@@ -1,0 +1,26 @@
+.logo {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--indigo-600);
+  color: #fff;
+}
+
+.sm {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-lg);
+}
+
+.md {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-lg);
+}
+
+.lg {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-xl);
+}

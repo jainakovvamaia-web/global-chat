@@ -1,0 +1,204 @@
+.page {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.nav {
+  width: 208px;
+  flex-shrink: 0;
+  padding: 16px 0;
+  border-right: 1px solid var(--slate-200);
+}
+
+.navItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  color: var(--slate-600);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.navItem:hover {
+  background: var(--slate-50);
+}
+
+.navItemActive,
+.navItemActive:hover {
+  font-weight: 600;
+  color: var(--indigo-700);
+  background: var(--indigo-50);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+/* На телефоне меню настроек становится горизонтальной полосой сверху */
+@media (max-width: 767px) {
+  .page {
+    flex-direction: column;
+  }
+
+  .nav {
+    width: auto;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    padding: 8px;
+    border-right: none;
+    border-bottom: 1px solid var(--slate-200);
+  }
+
+  .navItem {
+    width: auto;
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border-radius: var(--radius-xl);
+  }
+
+  .content {
+    padding: 16px;
+  }
+}
+
+/* ── Общие стили групп настроек ─────────────────────────── */
+
+.group {
+  max-width: 512px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.groupTitle {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-xl);
+}
+
+.optionTitle {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--slate-800);
+}
+
+.optionText {
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--slate-100);
+  border-radius: var(--radius-xl);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--slate-100);
+}
+
+.status {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--green-600);
+}
+
+.note {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+/* Карточка выбора темы */
+.themeOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  text-align: left;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.themeOption:hover {
+  border-color: var(--indigo-200);
+}
+
+.themeActive,
+.themeActive:hover {
+  background: var(--indigo-50);
+  border-color: var(--indigo-400);
+}
+
+.themeDisabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.themeEmoji {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.radioDot {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  background: var(--indigo-600);
+  border-radius: 50%;
+}
+
+.radioDot::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.error {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--red-500);
+}
+
+.block {
+  display: block;
+}

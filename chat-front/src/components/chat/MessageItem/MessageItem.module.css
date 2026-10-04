@@ -1,0 +1,241 @@
+.message {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  padding: 6px 16px;
+  border-radius: var(--radius-lg);
+  transition: background-color 0.15s;
+}
+
+.message:hover,
+.message:focus-within,
+.messageActive {
+  background: rgb(248 250 252 / 0.6);
+}
+
+.message:focus-visible {
+  outline-offset: -2px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.author {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.time {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}
+
+.reply {
+  max-width: 320px;
+  margin-bottom: 4px;
+  padding-left: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+  border-left: 2px solid var(--slate-300);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.replyAuthor {
+  font-weight: 600;
+  color: var(--slate-500);
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--slate-700);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.mention {
+  padding: 0 2px;
+  font-weight: 500;
+  color: var(--indigo-700);
+  background: var(--indigo-50);
+  border-radius: 4px;
+}
+
+/* ── Реакции ─────────────────────────────────────────────── */
+
+.reactions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.reaction {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+  background: var(--slate-100);
+  border: 1px solid var(--slate-200);
+  border-radius: 9999px;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.reaction:hover {
+  background: var(--indigo-50);
+  border-color: var(--indigo-200);
+}
+
+.reactionMine {
+  background: var(--indigo-50);
+  border-color: var(--indigo-300);
+}
+
+.reactionCount {
+  font-weight: 500;
+  color: var(--slate-600);
+}
+
+.reactionMine .reactionCount {
+  color: var(--indigo-700);
+}
+
+.addReaction {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--slate-500);
+  background: var(--slate-100);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s, background-color 0.15s;
+}
+
+.addReaction:hover {
+  background: var(--slate-200);
+}
+
+.message:hover .addReaction,
+.message:focus-within .addReaction,
+.messageActive .addReaction {
+  opacity: 1;
+}
+
+/* ── Панель действий ─────────────────────────────────────── */
+
+.actions {
+  position: absolute;
+  top: 4px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.message:hover .actions,
+.message:focus-within .actions,
+.messageActive .actions {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.actionButton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slate-400);
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.actionButton:hover {
+  color: var(--slate-600);
+  background: var(--slate-50);
+}
+
+.popup {
+  top: calc(100% + 4px);
+  right: 0;
+}
+
+.menu {
+  position: absolute;
+  z-index: 30;
+  min-width: 180px;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.15s ease-out;
+}
+
+.menuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  text-align: left;
+  color: var(--slate-700);
+  border-radius: var(--radius-lg);
+}
+
+.menuItem:hover {
+  background: var(--slate-50);
+}
+
+.menuItemDanger {
+  color: var(--red-600);
+}
+
+.menuItemDanger:hover {
+  background: var(--red-50);
+}
+
+/* ── Системное сообщение ─────────────────────────────────── */
+
+.system {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.systemText {
+  padding: 4px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+  background: var(--slate-100);
+  border-radius: 9999px;
+}

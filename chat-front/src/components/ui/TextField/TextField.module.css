@@ -1,0 +1,90 @@
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--slate-700);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 9px 14px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--slate-900);
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--slate-400);
+}
+
+.input:focus {
+  border-color: var(--indigo-400);
+  box-shadow: var(--ring-indigo);
+}
+
+.invalid {
+  border-color: var(--red-300);
+}
+
+.invalid:focus {
+  border-color: var(--red-300);
+  box-shadow: var(--ring-red);
+}
+
+.withToggle {
+  padding-right: 40px;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.select {
+  cursor: pointer;
+}
+
+.input:disabled {
+  color: var(--slate-400);
+  background: var(--slate-50);
+  cursor: not-allowed;
+}
+
+.toggle {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  color: var(--slate-400);
+  transform: translateY(-50%);
+  transition: color 0.15s;
+}
+
+.toggle:hover {
+  color: var(--slate-600);
+}
+
+.error {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--red-500);
+}
+
+.hint {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-400);
+}

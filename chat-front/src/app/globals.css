@@ -1,0 +1,173 @@
+/*
+  Глобальные стили: переменные дизайн-системы (цвета, радиусы, тени) и базовый сброс.
+  Значения взяты из Figma-макета: он свёрстан на Tailwind v4, поэтому цвета — точные
+  значения его палитры (slate + indigo) в формате oklch.
+  Стили конкретных компонентов лежат рядом с ними в *.module.css.
+*/
+
+:root {
+  /* Нейтральные (slate) */
+  --slate-50: oklch(98.4% 0.003 247.858);
+  --slate-100: oklch(96.8% 0.007 247.896);
+  --slate-200: oklch(92.9% 0.013 255.508);
+  --slate-300: oklch(86.9% 0.022 252.894);
+  --slate-400: oklch(70.4% 0.04 256.788);
+  --slate-500: oklch(55.4% 0.046 257.417);
+  --slate-600: oklch(44.6% 0.043 257.281);
+  --slate-700: oklch(37.2% 0.044 257.287);
+  --slate-800: oklch(27.9% 0.041 260.031);
+  --slate-900: oklch(20.8% 0.042 265.755);
+
+  /* Основной цвет бренда (indigo) */
+  --indigo-50: oklch(96.2% 0.018 272.314);
+  --indigo-100: oklch(93% 0.034 272.788);
+  --indigo-200: oklch(87% 0.065 274.039);
+  --indigo-300: oklch(78.5% 0.115 274.713);
+  --indigo-400: oklch(67.3% 0.182 276.935);
+  --indigo-500: oklch(58.5% 0.233 277.117);
+  --indigo-600: oklch(51.1% 0.262 276.966);
+  --indigo-700: oklch(45.7% 0.24 277.023);
+  --indigo-800: oklch(39.8% 0.195 277.366);
+  --indigo-900: oklch(35.9% 0.144 278.697);
+  --indigo-950: oklch(25.7% 0.09 281.288);
+
+  /* Статусы и акценты */
+  --green-50: oklch(98.2% 0.018 155.826);
+  --green-100: oklch(96.2% 0.044 156.743);
+  --green-400: oklch(79.2% 0.209 151.711);
+  --green-500: oklch(72.3% 0.219 149.579);
+  --green-600: oklch(62.7% 0.194 149.214);
+  --green-700: oklch(52.7% 0.154 150.069);
+  --red-50: oklch(97.1% 0.013 17.38);
+  --red-100: oklch(93.6% 0.032 17.717);
+  --red-200: oklch(88.5% 0.062 18.334);
+  --red-300: oklch(80.8% 0.114 19.571);
+  --red-500: oklch(63.7% 0.237 25.331);
+  --red-600: oklch(57.7% 0.245 27.325);
+  --amber-50: oklch(98.7% 0.022 95.277);
+  --amber-100: oklch(96.2% 0.059 95.617);
+  --amber-200: oklch(92.4% 0.12 95.746);
+  --amber-500: oklch(76.9% 0.188 70.08);
+  --amber-600: oklch(66.6% 0.179 58.318);
+  --amber-700: oklch(55.5% 0.163 48.998);
+  --blue-50: oklch(97% 0.014 254.604);
+  --blue-600: oklch(54.6% 0.245 262.881);
+  --purple-50: oklch(97.7% 0.014 308.299);
+  --purple-100: oklch(94.6% 0.033 307.174);
+  --purple-500: oklch(62.7% 0.265 303.9);
+  --purple-600: oklch(55.8% 0.288 302.321);
+  --emerald-100: oklch(95% 0.052 163.051);
+  --emerald-700: oklch(50.8% 0.118 165.612);
+
+  /* Скругления */
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+  /* Кольцо фокуса у полей ввода */
+  --ring-indigo: 0 0 0 2px var(--indigo-100);
+  --ring-red: 0 0 0 2px var(--red-100);
+
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--slate-900);
+  background: var(--slate-50);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Видимый фокус для навигации с клавиатуры (требование доступности из ТЗ) */
+:focus-visible {
+  outline: 2px solid var(--indigo-500);
+  outline-offset: 2px;
+}
+
+/* Тонкие полосы прокрутки, как в макете */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--slate-300) transparent;
+}
+
+/* Скрыть элемент визуально, но оставить для экранных дикторов */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.container {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  main {
+    flex: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

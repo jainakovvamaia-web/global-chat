@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Global Community Chat
 
-## Getting Started
+Анонимный чат сообщества: общие чаты по городу, району, школе и университету, группы,
+каналы, уведомления и сообщения в реальном времени.
 
-First, run the development server:
+| Папка | Что это | Технологии |
+|---|---|---|
+| `chat-front` | сайт | Next.js, React, TanStack Query, Axios |
+| `chat-beck` | REST API + WebSocket (`/ws`) | Express, TypeScript, ws |
+| — | база и вход | Supabase (PostgreSQL, Auth, Google OAuth) |
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Подробная настройка Supabase, ключей и Google — в [НАСТРОЙКА.md](НАСТРОЙКА.md).
+
+## Локальный запуск
+
+```
+cd chat-beck
+cp .env.example .env        # заполнить значения
+npm install
+npm run dev                 # http://localhost:5000, WebSocket ws://localhost:5000/ws
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+cd chat-front
+cp .env.local.example .env.local   # заполнить значения
+npm install
+npm run dev                 # http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Файлы `.env` и `.env.local` в git не попадают. В репозитории только примеры без значений.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Переменные окружения
 
-## Learn More
+### Frontend (`chat-front`, Vercel)
 
-To learn more about Next.js, take a look at the following resources:
+| Переменная | Пример для production |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | `https://your-backend.onrender.com/api` |
+| `NEXT_PUBLIC_WS_URL` | `wss://your-backend.onrender.com/ws` (необязательно — иначе берётся из API URL) |
+| `NEXT_PUBLIC_SUPABASE_URL` | `https://xxxx.supabase.co` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | публичный anon / publishable key |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend (`chat-beck`, Node-хостинг)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Переменная | Значение |
+|---|---|
+| `SUPABASE_URL` | `https://xxxx.supabase.co` |
+| `SUPABASE_ANON_KEY` | публичный ключ |
+| `SUPABASE_SERVICE_ROLE_KEY` | секретный ключ — только здесь |
+| `FRONTEND_URL` | `https://your-app.vercel.app` (можно несколько через запятую) |
+| `MEMBER_ID_SECRET` | случайная строка от 32 символов |
+| `ANTHROPIC_API_KEY` | необязательно |
+| `PORT` | обычно задаёт хостинг сам |
 
-## Deploy on Vercel
+## Деплой
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Frontend → Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Import Git Repository → этот репозиторий
+- **Root Directory:** `chat-front`
+- Framework Preset: Next.js
+- Install Command: `npm install`, Build Command: `npm run build`
+- Environment Variables — из таблицы «Frontend» выше
+
+### Backend + WebSocket → Render / Railway / Fly.io
+
+Backend — постоянный Node-процесс (WebSocket не работает в serverless-функциях Vercel).
+
+- Root Directory: `chat-beck`
+- Build Command: `npm install --include=dev && npm run build` (TypeScript нужен для сборки)
+- Start Command: `npm start`
+- Health check: `/api/health`
+- Environment Variables — из таблицы «Backend» выше
+
+### После деплоя
+
+1. В backend `FRONTEND_URL` — точный адрес сайта на Vercel (без `/` в конце).
+2. Supabase → Authentication → URL Configuration: Site URL — адрес Vercel; в Redirect URLs добавить
+   `https://your-app.vercel.app/auth/callback` и `https://your-app.vercel.app/auth/reset-password`
+   (локальные адреса оставить).
+3. Google Cloud → OAuth client → Authorized JavaScript origins: добавить адрес Vercel.
+   Redirect URI (Supabase callback) не меняется.

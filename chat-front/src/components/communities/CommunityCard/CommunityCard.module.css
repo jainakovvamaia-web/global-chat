@@ -1,0 +1,110 @@
+.card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-2xl);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: var(--indigo-200);
+  box-shadow: var(--shadow-md);
+}
+
+.cover {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background: linear-gradient(to bottom right, var(--indigo-50), var(--blue-50));
+}
+
+.privateBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+  background: rgb(15 23 42 / 0.7);
+  border-radius: 9999px;
+}
+
+.body {
+  padding: 16px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.name {
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.category {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  font-size: 12px;
+  line-height: 16px;
+  background: var(--slate-100);
+  border-radius: 9999px;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.625;
+  color: var(--slate-500);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--slate-500);
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.onlineDot {
+  width: 6px;
+  height: 6px;
+  background: var(--green-500);
+  border-radius: 50%;
+}
+
+/* Карточка чата: обложка пониже и отступ под названием */
+.coverSmall {
+  height: 56px;
+  font-size: 28px;
+}
+
+.nameSpaced {
+  margin-bottom: 4px;
+}

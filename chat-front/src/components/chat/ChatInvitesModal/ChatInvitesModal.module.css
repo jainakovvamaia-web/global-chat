@@ -1,0 +1,43 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 479px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.05em;
+}
+
+.status {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: 500;
+  color: var(--slate-500);
+  background: var(--slate-100);
+  border-radius: 9999px;
+}
+
+.list {
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--slate-100);
+}

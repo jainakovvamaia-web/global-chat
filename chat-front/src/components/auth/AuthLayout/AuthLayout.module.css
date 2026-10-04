@@ -1,0 +1,149 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--slate-50);
+}
+
+.panel {
+  position: relative;
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 48px;
+  background: linear-gradient(to bottom right, var(--indigo-600), var(--indigo-700), var(--indigo-900));
+}
+
+@media (min-width: 1024px) {
+  .panel {
+    display: flex;
+  }
+}
+
+.rings {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+}
+
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.panelTop,
+.stats {
+  position: relative;
+  z-index: 1;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.brandIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(255 255 255 / 0.2);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(8px);
+}
+
+.quote {
+  max-width: 320px;
+  font-size: 20px;
+  line-height: 1.625;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.9);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.authorAvatar {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: rgb(255 255 255 / 0.2);
+  border-radius: 50%;
+}
+
+.authorName {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.authorPlace {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(255 255 255 / 0.6);
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat {
+  padding: 12px 16px;
+  background: rgb(255 255 255 / 0.1);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(8px);
+}
+
+.statValue {
+  font-weight: 700;
+  color: #fff;
+}
+
+.statLabel {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgb(255 255 255 / 0.6);
+}
+
+.formSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+@media (max-width: 479px) {
+  .formSide {
+    padding: 24px 16px;
+  }
+}
+
+.formBox {
+  width: 100%;
+  max-width: 384px;
+  animation: fadeIn 0.2s ease-out;
+}

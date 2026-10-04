@@ -1,0 +1,19 @@
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* На узких экранах два списка в ряд не помещаются */
+@media (max-width: 399px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
