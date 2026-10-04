@@ -40,6 +40,8 @@ export interface RealtimeServerOptions {
   // Адреса сайта (FRONTEND_URL). Подключения со страниц других сайтов отклоняются.
   // null — без проверки (только для тестов).
   allowedOrigins: readonly string[] | null;
+  // Для диагностики: сообщить, что подключение с чужого адреса отклонено
+  onRejectedOrigin?: (origin: string) => void;
 }
 
 // Время истечения JWT (поле exp). Подпись уже проверил Supabase Auth — здесь только читаем срок.
@@ -60,7 +62,7 @@ function rejectUpgrade(socket: Duplex, status: number, text: string): void {
 }
 
 export function attachWebSocket(server: Server, options: RealtimeServerOptions): { close: () => void } {
-  const { hub, verifyToken, allowedOrigins } = options;
+  const { hub, verifyToken, allowedOrigins, onRejectedOrigin } = options;
   const wss = new WebSocketServer({ noServer: true, maxPayload: MAX_PAYLOAD_BYTES });
   const alive = new WeakMap<WebSocket, boolean>();
 
@@ -72,7 +74,8 @@ export function attachWebSocket(server: Server, options: RealtimeServerOptions):
     }
     // Браузер всегда присылает Origin: чужой сайт не сможет подключиться от имени пользователя
     const origin = request.headers.origin;
-    if (allowedOrigins && origin && !allowedOrigins.includes(origin)) {
+    if (allowedOrigins && origin && !allowedOrigins.includes(origin.toLowerCase())) {
+      onRejectedOrigin?.(origin);
       rejectUpgrade(socket, 403, "Forbidden");
       return;
     }

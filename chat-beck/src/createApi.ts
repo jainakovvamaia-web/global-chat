@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import { env } from "./config/env";
+import { corsOptions } from "./config/cors";
 import { errorHandler } from "./middlewares/errorHandler";
 import { apiLimiter } from "./middlewares/rateLimit";
 import { apiRouter } from "./routes";
@@ -11,9 +11,9 @@ const createApi = () => {
   app.disable("x-powered-by");
   app.set("trust proxy", 1); // правильный IP клиента за прокси (для rate limit)
 
-  // Запросы принимаются только с адресов frontend (FRONTEND_URL: локальный и/или Vercel).
-  // Без cookies: авторизация — заголовком Authorization, поэтому credentials не нужны.
-  app.use(cors({ origin: env.FRONTEND_ORIGINS, allowedHeaders: ["Content-Type", "Authorization"] }));
+  // CORS — самым первым: preflight (OPTIONS) получает ответ 204 с заголовками ещё до
+  // rate limit, разбора JSON и маршрутов. Адреса — из FRONTEND_URL (локальный и/или Vercel).
+  app.use(cors(corsOptions));
   app.use(express.json({ limit: "100kb" }));
   app.use("/api", apiLimiter, apiRouter);
 

@@ -18,7 +18,9 @@ const envSchema = z.object({
     .default("http://localhost:3000")
     .transform((value, ctx) => {
       const origins: string[] = [];
-      for (const item of value.split(",").map((part) => part.trim()).filter(Boolean)) {
+      // Пробелы, кавычки и «/» в конце не мешают: «"https://x.vercel.app/"» → https://x.vercel.app
+      const items = value.split(",").map((part) => part.trim().replace(/^["']+|["']+$/g, "").trim());
+      for (const item of items.filter(Boolean)) {
         try {
           const url = new URL(item);
           if (url.protocol !== "http:" && url.protocol !== "https:") throw new Error("protocol");

@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { getAllowedOrigins, reportRejectedOrigin } from "./config/cors";
 import { env } from "./config/env";
 import createApi from "./createApi";
 import { verifyAccessToken } from "./middlewares/authMiddleware";
@@ -13,11 +14,12 @@ const server = createServer(app);
 attachWebSocket(server, {
   hub: realtimeHub,
   verifyToken: verifyAccessToken,
-  allowedOrigins: env.FRONTEND_ORIGINS,
+  allowedOrigins: getAllowedOrigins(),
+  onRejectedOrigin: (origin) => reportRejectedOrigin(origin, "ws"),
 });
 
 server.listen(env.PORT, () => {
   console.log(`API запущен на порту ${env.PORT}: /api (локально http://localhost:${env.PORT}/api)`);
   console.log(`WebSocket: ${WEBSOCKET_PATH} (локально ws://localhost:${env.PORT}${WEBSOCKET_PATH})`);
-  console.log(`Разрешённые адреса сайта: ${env.FRONTEND_ORIGINS.join(", ")}`);
+  console.log(`Разрешённые адреса сайта: ${getAllowedOrigins().join(", ")}`);
 });
