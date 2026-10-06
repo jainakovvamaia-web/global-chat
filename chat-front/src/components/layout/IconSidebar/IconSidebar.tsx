@@ -8,7 +8,7 @@ import NavButton from "../NavButton/NavButton";
 import { getActiveSection, NAV_ITEMS, type SectionKey } from "../navItems";
 import styles from "./IconSidebar.module.css";
 
-const MAIN_SECTIONS: SectionKey[] = ["chat", "nearby"];
+const MAIN_SECTIONS: SectionKey[] = ["chat"];
 const BOTTOM_SECTIONS: SectionKey[] = ["settings", "profile"];
 
 interface IconSidebarProps {
