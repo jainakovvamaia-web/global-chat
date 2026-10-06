@@ -6,7 +6,7 @@ import NavButton from "../NavButton/NavButton";
 import { getActiveSection, NAV_ITEMS, type SectionKey } from "../navItems";
 import styles from "./MobileNav.module.css";
 
-const MOBILE_SECTIONS: SectionKey[] = ["chat", "nearby", "events", "notifications", "profile"];
+const MOBILE_SECTIONS: SectionKey[] = ["chat", "events", "notifications", "profile"];
 
 // Нижняя навигация на телефонах и планшетах (< 1024px).
 // Остальные разделы (участники, AI, настройки, админка) открываются из профиля.
