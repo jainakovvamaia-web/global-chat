@@ -12,6 +12,9 @@ import type { Channel, MessagesPage } from "@/types";
 // • вошёл — соединение открыто, вышел — закрыто; обновился токен — повторная авторизация;
 // • события обновляют кэш напрямую, без перезапроса истории;
 // • после обрыва связи пропущенное догружается через REST.
+// Вкладка была скрыта дольше этого — считаем соединение ненадёжным и открываем заново
+const RESUME_REFRESH_MS = 10_000;
+
 export default function RealtimeBridge() {
   const queryClient = useQueryClient();
   const userId = useAuthStore((state) => state.session?.user.id ?? null);
@@ -29,11 +32,34 @@ export default function RealtimeBridge() {
     if (accessToken) void getRealtime().reauthenticate();
   }, [accessToken]);
 
-  // Сеть вернулась — переподключаемся сразу, не дожидаясь таймера
+  // Телефоны и фоновые вкладки: браузер «усыпляет» страницу и может молча оборвать WebSocket.
+  // Вернулись на вкладку после паузы или вернулась сеть — открываем соединение заново
+  // и догружаем пропущенные сообщения (событие resync ниже).
   useEffect(() => {
-    const onOnline = () => getRealtime().reconnectNow();
-    window.addEventListener("online", onOnline);
-    return () => window.removeEventListener("online", onOnline);
+    let hiddenAt: number | null = document.visibilityState === "hidden" ? Date.now() : null;
+    const refresh = () => getRealtime().refresh();
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        hiddenAt = Date.now();
+        return;
+      }
+      const wasHiddenFor = hiddenAt === null ? 0 : Date.now() - hiddenAt;
+      hiddenAt = null;
+      if (wasHiddenFor > RESUME_REFRESH_MS) refresh();
+      else getRealtime().reconnectNow();
+    };
+    // Страница восстановлена из кэша «назад/вперёд» — старое соединение точно не живое
+    const onPageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) refresh();
+    };
+    window.addEventListener("online", refresh);
+    window.addEventListener("pageshow", onPageShow);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.removeEventListener("online", refresh);
+      window.removeEventListener("pageshow", onPageShow);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   // Один обработчик событий на всё приложение — дублей слушателей нет

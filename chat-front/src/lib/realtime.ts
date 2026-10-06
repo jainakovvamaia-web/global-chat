@@ -105,6 +105,27 @@ export class RealtimeClient {
     this.open();
   }
 
+  // Принудительно открыть соединение заново. Нужно, когда вкладка вернулась из фона или
+  // вернулась сеть: на телефонах браузер обрывает WebSocket «молча» — сокет выглядит открытым,
+  // но события больше не приходят. После повторной авторизации придёт «resync»: всё, что
+  // пропущено, догрузится через REST.
+  refresh(): void {
+    if (!this.wanted) return;
+    this.clearRetry();
+    const socket = this.socket;
+    this.socket = null; // onclose старого сокета проигнорируется: он уже не текущий
+    if (socket) {
+      try {
+        socket.close(1000, "refresh");
+      } catch {
+        // сокет уже мёртв — не важно
+      }
+    }
+    if (this.everAuthenticated && this.status === "authenticated") this.setStatus("reconnecting");
+    this.retry = 0;
+    this.open();
+  }
+
   getStatus(): RealtimeStatus {
     return this.status;
   }
